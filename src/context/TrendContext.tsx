@@ -10,7 +10,13 @@ type TrendProviderProps = {
   trendService: TrendService;
 };
 
-type SummaryDataValues = { title: string; content: string; fluctuation: string; isIncreased: boolean };
+type SummaryDataValues = {
+  title: string;
+  content: string;
+  fluctuation: string;
+  isIncreased: boolean;
+  difference: number;
+};
 
 type State = {
   trends: Trend[];
@@ -68,37 +74,43 @@ export function TrendProvider({ children, trendService }: TrendProviderProps) {
         title: 'ROAS',
         content: Math.round(cur.roas) + '%',
         fluctuation: getFluctucation(prev.roas, cur.roas) + '%',
-        isIncreased: cur.roas >= prev.roas,
+        isIncreased: prev.roas ? cur.roas >= prev.roas : false,
+        difference: prev.roas ? cur.roas - prev.roas : 0,
       },
       {
         title: '광고비',
         content: parseString(cur.cost) + ' 원',
         fluctuation: getFluctucation(prev.cost, cur.cost) + ' 원',
-        isIncreased: cur.cost >= prev.cost,
+        isIncreased: prev.cost ? cur.cost >= prev.cost : false,
+        difference: prev.cost ? cur.cost - prev.cost : 0,
       },
       {
         title: '노출수',
         content: parseString(cur.imp) + ' 회',
         fluctuation: getFluctucation(prev.imp, cur.imp) + ' 회',
-        isIncreased: cur.imp >= prev.imp,
+        isIncreased: prev.imp ? cur.imp >= prev.imp : false,
+        difference: prev.imp ? cur.imp - prev.imp : 0,
       },
       {
         title: '클릭수',
         content: parseString(cur.click) + ' 회',
         fluctuation: getFluctucation(prev.click, cur.click) + ' 회',
-        isIncreased: cur.click >= prev.click,
+        isIncreased: prev.click ? cur.click >= prev.click : false,
+        difference: prev.click ? cur.click - prev.click : 0,
       },
       {
         title: '전환수',
         content: parseString(cur.conv) + ' 회',
         fluctuation: getFluctucation(prev.conv, cur.conv) + ' 회',
-        isIncreased: cur.conv >= prev.conv,
+        isIncreased: prev.conv ? cur.conv >= prev.click : false,
+        difference: prev.conv ? cur.conv - prev.conv : 0,
       },
       {
         title: '매출',
         content: parseString(cur.convValue) + ' 원',
         fluctuation: getFluctucation(prev.convValue, cur.convValue) + ' 원',
-        isIncreased: cur.convValue >= prev.convValue,
+        isIncreased: prev.convValue ? cur.convValue >= prev.click : false,
+        difference: prev.convValue ? cur.convValue - prev.convValue : 0,
       },
     ];
 
@@ -109,6 +121,7 @@ export function TrendProvider({ children, trendService }: TrendProviderProps) {
     const period = getPeriod(fromDate, toDate);
 
     const data = await trendService.get(fromDate, toDate);
+
     setTrends(data);
     const curTrendsAverage = getTrendsAverage(data);
 

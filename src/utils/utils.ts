@@ -12,7 +12,8 @@ export const parseString = (num: number) => {
   return Math.round(num).toLocaleString();
 };
 
-export const getFluctucation = (prev: number, cur: number) => parseString(Math.abs(Math.round(cur - prev)));
+export const getFluctucation = (prev: number, cur: number) =>
+  prev ? parseString(Math.abs(Math.round(cur - prev))) : 0;
 
 export const getPeriod = (fromDate: Date, toDate: Date) =>
   Math.abs((fromDate.getTime() - toDate.getTime()) / MS_PER_DAY) + 1;

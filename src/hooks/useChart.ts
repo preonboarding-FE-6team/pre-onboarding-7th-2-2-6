@@ -1,6 +1,5 @@
 import Chart from 'chart.js/auto';
-import { CategoryScale } from 'chart.js';
-import { ChartData } from 'chart.js';
+import { CategoryScale, ChartData } from 'chart.js';
 import { useTrend } from '../context/TrendContext';
 
 function useChart() {

@@ -7,13 +7,14 @@ function PerformanceSummary() {
 
   return (
     <Container>
-      {trends?.summaryData.map(({ title, content, fluctuation, isIncreased }) => (
+      {trends?.summaryData.map(({ title, content, fluctuation, isIncreased, difference }) => (
         <PerformanceCard
           key={title}
           title={title}
           content={content}
           fluctuation={fluctuation}
           isIncreased={isIncreased}
+          difference={difference}
         />
       ))}
     </Container>
