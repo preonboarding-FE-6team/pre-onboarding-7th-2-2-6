@@ -3,6 +3,8 @@ import { CategoryScale, ChartData } from 'chart.js';
 
 import { Line } from 'react-chartjs-2';
 import { useTrend } from '../context/TrendContext';
+import { getFormattedNumber } from '../utils/utils';
+import { colors } from '../styles/theme';
 
 function useChart() {
   Chart.register(CategoryScale);
@@ -37,13 +39,17 @@ function useChart() {
   const options: React.ComponentProps<typeof Line>['options'] = {
     elements: {
       point: {
-        radius: 0, // 점 제거
+        radius: 0,
+        hitRadius: 10,
       },
     },
     scales: {
       xAxis: {
         grid: {
           display: false,
+        },
+        ticks: {
+          color: colors.grey_300,
         },
       },
       y: {
@@ -53,6 +59,13 @@ function useChart() {
         grid: {
           drawBorder: false,
         },
+        ticks: {
+          color: colors.grey_300,
+        },
+        afterTickToLabelConversion: (scale) => {
+          const { ticks } = scale;
+          scale.ticks = ticks.map(({ value }) => ({ value, label: getFormattedNumber(value) }));
+        },
       },
       y1: {
         type: 'linear',
@@ -60,6 +73,13 @@ function useChart() {
         position: 'right',
         grid: {
           drawOnChartArea: false,
+        },
+        ticks: {
+          color: colors.grey_300,
+        },
+        afterTickToLabelConversion: (scale) => {
+          const { ticks } = scale;
+          scale.ticks = ticks.map(({ value }) => ({ value, label: getFormattedNumber(value) }));
         },
       },
     },

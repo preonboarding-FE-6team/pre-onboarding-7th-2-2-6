@@ -20,3 +20,22 @@ export const getFluctucation = (prev: number, cur: number) =>
 
 export const getPeriod = (fromDate: Date, toDate: Date) =>
   Math.abs((fromDate.getTime() - toDate.getTime()) / MS_PER_DAY) + 1;
+
+export const getFormattedNumber = (num: number) => {
+  if (num < 10_000) {
+    return num.toLocaleString();
+  }
+  if (num < 100_000) {
+    return `${Number((num / 10_000).toFixed(1))}만`;
+  }
+  if (num < 1_000_000) {
+    return `${Number((num / 100_000).toFixed(1))}십만`;
+  }
+  if (num < 10_000_000) {
+    return `${Number((num / 1_000_000).toFixed(1))}백만`;
+  }
+  if (num < 100_000_000) {
+    return `${Number((num / 10_000_000).toFixed(1))}천만`;
+  }
+  return `${Number((num / 100_000_000).toFixed(1))}억`;
+};
