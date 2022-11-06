@@ -8,7 +8,7 @@ type SelectedOption =
   | { id?: number | undefined; option?: string | undefined; content?: string | undefined }
   | undefined;
 
-function useDropdownDouble(initOption: DropdownOption[]) {
+function useDropdownDouble() {
   const trends = useTrend();
   const [isOpt1Open, setIsOpt1Open] = useState(false);
   const [isOpt2Open, setIsOpt2Open] = useState(false);
@@ -30,7 +30,7 @@ function useDropdownDouble(initOption: DropdownOption[]) {
 
     if (option.id === selected[1]?.id) return;
 
-    setSelected(([opt1, opt2]) => [option, opt2]);
+    setSelected(([, opt2]) => [option, opt2]);
   };
 
   const handleOpt2Select = (option: DropdownOption) => {
@@ -38,7 +38,7 @@ function useDropdownDouble(initOption: DropdownOption[]) {
 
     if (option.id === selected[0]?.id) return;
 
-    setSelected(([opt1, opt2]) => [opt1, option]);
+    setSelected(([opt1]) => [opt1, option]);
   };
 
   return { isOpt1Open, isOpt2Open, selected, handleOpt1Toggle, handleOpt2Toggle, handleOpt1Select, handleOpt2Select };
