@@ -7,7 +7,7 @@ abstract class HttpClientInterface {
     this.baseURL = baseURL;
   }
 
-  abstract fetch(endPoint: string, options?: { [key: string]: any }): Promise<AxiosResponse<any, any>>;
+  abstract fetch(endPoint: string, options?: { [key: string]: unknown }): Promise<AxiosResponse<unknown, unknown>>;
 }
 
 export class HttpClient extends HttpClientInterface {
