@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import styled, { css } from 'styled-components';
 import { Line } from 'react-chartjs-2';
+import type { DeepPartial } from 'chart.js/types/utils';
 import Container from '../../components/Container';
 import DropdownSmall from '../../components/DropdownSmall';
 import { flexBox } from '../../styles/mixin';
@@ -9,6 +11,8 @@ import useChart from '../../hooks/useChart';
 import { useTrend } from '../../context/TrendContext';
 import { DropdownOption } from '../../types';
 import DropdownDouble from '../../components/DropdownDouble';
+
+type _DeepPartialObject<T> = { [P in keyof T]?: DeepPartial<T[P]> };
 
 function Dashboard() {
   const { data } = useChart();
@@ -21,6 +25,29 @@ function Dashboard() {
   const handleOption2Click = (option: DropdownOption) => {
     trends?.setGraphOption(([opt1, opt2]) => (option.id === opt1.id ? [opt1, opt2] : [opt1, option]));
   };
+  const isShowY1 = trends?.graphOption[1].content === '선택안함';
+  const options: React.ComponentProps<typeof Line>['options'] = {
+    elements: {
+      point: {
+        radius: 0, // 점 제거
+      },
+    },
+    scales: {
+      y: {
+        type: 'linear',
+        display: true,
+        position: 'left',
+      },
+      y1: {
+        type: 'linear',
+        display: !isShowY1,
+        position: 'right',
+        grid: {
+          drawOnChartArea: false,
+        },
+      },
+    },
+  };
 
   return (
     <>
@@ -29,12 +56,10 @@ function Dashboard() {
         <PerformanceSummary />
         <Dropdowns>
           <DropdownDouble options={graphOptions} onOpt1Click={handleOption1Click} onOpt2Click={handleOption2Click} />
-
           <DropdownSmall options={periodOptions} customStyle={DropdownStyle2} initialOption={periodOptions[0]} />
         </Dropdowns>
-
         <ChartContainer>
-          <Line data={data} />
+          <Line data={data} options={options} />
         </ChartContainer>
       </Container>
     </>
