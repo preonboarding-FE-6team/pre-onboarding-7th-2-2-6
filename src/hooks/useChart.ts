@@ -1,6 +1,5 @@
 import Chart from 'chart.js/auto';
-import { CategoryScale } from 'chart.js';
-import { ChartData } from 'chart.js';
+import { CategoryScale, ChartData } from 'chart.js';
 import { useTrend } from '../context/TrendContext';
 
 function useChart() {
@@ -19,6 +18,7 @@ function useChart() {
         backgroundColor: '#4FADF7',
         borderColor: '#4FADF7',
         data: trends?.trends.map((trend) => (option1?.option ? trend[option1?.option] : 0)),
+        yAxisID: 'y',
       },
       {
         type: 'line',
@@ -26,6 +26,7 @@ function useChart() {
         backgroundColor: option2?.id !== -1 && option2?.content ? '#85DA47' : 'rgba(255, 255, 255, 0)',
         borderColor: option2?.id !== -1 && option2?.content ? '#85DA47' : 'rgba(255, 255, 255, 0)',
         data: trends?.trends.map((trend) => (option2?.option ? trend[option2?.option] : 0)),
+        yAxisID: 'y1',
       },
     ],
   };
