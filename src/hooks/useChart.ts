@@ -41,10 +41,18 @@ function useChart() {
       },
     },
     scales: {
+      xAxis: {
+        grid: {
+          display: false,
+        },
+      },
       y: {
         type: 'linear',
         display: true,
         position: 'left',
+        grid: {
+          drawBorder: false,
+        },
       },
       y1: {
         type: 'linear',
