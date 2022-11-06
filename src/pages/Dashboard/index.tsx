@@ -15,7 +15,7 @@ import DropdownDouble from '../../components/DropdownDouble';
 type _DeepPartialObject<T> = { [P in keyof T]?: DeepPartial<T[P]> };
 
 function Dashboard() {
-  const { data } = useChart();
+  const { data, options } = useChart();
   const trends = useTrend();
 
   const handleOption1Click = (option: DropdownOption) => {
@@ -24,29 +24,6 @@ function Dashboard() {
 
   const handleOption2Click = (option: DropdownOption) => {
     trends?.setGraphOption(([opt1, opt2]) => (option.id === opt1.id ? [opt1, opt2] : [opt1, option]));
-  };
-  const isShowY1 = trends?.graphOption[1].content === '선택안함';
-  const options: React.ComponentProps<typeof Line>['options'] = {
-    elements: {
-      point: {
-        radius: 0, // 점 제거
-      },
-    },
-    scales: {
-      y: {
-        type: 'linear',
-        display: true,
-        position: 'left',
-      },
-      y1: {
-        type: 'linear',
-        display: !isShowY1,
-        position: 'right',
-        grid: {
-          drawOnChartArea: false,
-        },
-      },
-    },
   };
 
   return (
