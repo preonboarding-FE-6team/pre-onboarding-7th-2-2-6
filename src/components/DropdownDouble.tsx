@@ -1,4 +1,4 @@
-import styled, { css, FlattenInterpolation, ThemeProps } from 'styled-components';
+import styled, { css, DefaultTheme, FlattenInterpolation, ThemeProps } from 'styled-components';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import useDropdownDouble from '../hooks/useDropdownDouble';
 import { DropdownOption } from '../types';
@@ -7,7 +7,7 @@ import { flexBox } from '../styles/mixin';
 
 type DropdownDoubleProps = {
   options: DropdownOption[];
-  customStyle?: FlattenInterpolation<ThemeProps<unknown>>;
+  customStyle?: FlattenInterpolation<ThemeProps<DefaultTheme>>;
   onOpt1Click?: (option: DropdownOption) => void;
   onOpt2Click?: (option: DropdownOption) => void;
 };
@@ -88,7 +88,7 @@ const DoubleContainer = styled.div`
   ${flexBox()}
 `;
 
-const Container = styled.div<{ customStyle?: FlattenInterpolation<ThemeProps<unknown>> | undefined }>`
+const Container = styled.div<{ customStyle?: FlattenInterpolation<ThemeProps<DefaultTheme>> | undefined }>`
   position: relative;
   width: 123px;
   min-height: 40px;

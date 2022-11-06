@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import styled, { css } from 'styled-components';
 import { Line } from 'react-chartjs-2';
+import type { DeepPartial } from 'chart.js/types/utils';
 import Container from '../../components/Container';
 import DropdownSmall from '../../components/DropdownSmall';
 import { flexBox } from '../../styles/mixin';
@@ -10,8 +12,10 @@ import { useTrend } from '../../context/TrendContext';
 import { DropdownOption } from '../../types';
 import DropdownDouble from '../../components/DropdownDouble';
 
+type _DeepPartialObject<T> = { [P in keyof T]?: DeepPartial<T[P]> };
+
 function Dashboard() {
-  const { data } = useChart();
+  const { data, options } = useChart();
   const trends = useTrend();
 
   const handleOption1Click = (option: DropdownOption) => {
@@ -29,12 +33,10 @@ function Dashboard() {
         <PerformanceSummary />
         <Dropdowns>
           <DropdownDouble options={graphOptions} onOpt1Click={handleOption1Click} onOpt2Click={handleOption2Click} />
-
-          <DropdownSmall options={periodOptions} customStyle={DropdownStyle2} />
+          <DropdownSmall options={periodOptions} customStyle={DropdownStyle2} initialOption={periodOptions[0]} />
         </Dropdowns>
-
         <ChartContainer>
-          <Line data={data} />
+          <Line data={data} options={options} />
         </ChartContainer>
       </Container>
     </>

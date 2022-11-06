@@ -1,5 +1,7 @@
 import Chart from 'chart.js/auto';
 import { CategoryScale, ChartData } from 'chart.js';
+
+import { Line } from 'react-chartjs-2';
 import { useTrend } from '../context/TrendContext';
 
 function useChart() {
@@ -18,6 +20,7 @@ function useChart() {
         backgroundColor: '#4FADF7',
         borderColor: '#4FADF7',
         data: trends?.trends.map((trend) => (option1?.option ? trend[option1?.option] : 0)),
+        yAxisID: 'y',
       },
       {
         type: 'line',
@@ -25,11 +28,36 @@ function useChart() {
         backgroundColor: option2?.id !== -1 && option2?.content ? '#85DA47' : 'rgba(255, 255, 255, 0)',
         borderColor: option2?.id !== -1 && option2?.content ? '#85DA47' : 'rgba(255, 255, 255, 0)',
         data: trends?.trends.map((trend) => (option2?.option ? trend[option2?.option] : 0)),
+        yAxisID: 'y1',
       },
     ],
   };
 
-  return { data };
+  const isShowY1 = trends?.graphOption[1].content === '선택안함';
+  const options: React.ComponentProps<typeof Line>['options'] = {
+    elements: {
+      point: {
+        radius: 0, // 점 제거
+      },
+    },
+    scales: {
+      y: {
+        type: 'linear',
+        display: true,
+        position: 'left',
+      },
+      y1: {
+        type: 'linear',
+        display: !isShowY1,
+        position: 'right',
+        grid: {
+          drawOnChartArea: false,
+        },
+      },
+    },
+  };
+
+  return { data, options };
 }
 
 export default useChart;

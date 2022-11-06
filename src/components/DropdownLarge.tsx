@@ -1,4 +1,4 @@
-import styled, { css, FlattenInterpolation, ThemeProps } from 'styled-components';
+import styled, { css, DefaultTheme, FlattenInterpolation, ThemeProps } from 'styled-components';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import useDropdown from '../hooks/useDropdown';
 import { DropdownOption } from '../types';
@@ -6,7 +6,7 @@ import OptionLarge from './OptionLarge';
 
 type DropdownLargeProps = {
   options: DropdownOption[];
-  customStyle?: FlattenInterpolation<ThemeProps<unknown>>;
+  customStyle?: FlattenInterpolation<ThemeProps<DefaultTheme>>;
   onClick?: () => void;
 };
 
@@ -44,7 +44,7 @@ function DropdownLarge({ options, customStyle, onClick }: DropdownLargeProps) {
 
 export default DropdownLarge;
 
-const Container = styled.div<{ customStyle?: FlattenInterpolation<ThemeProps<unknown>> | undefined }>`
+const Container = styled.div<{ customStyle?: FlattenInterpolation<ThemeProps<DefaultTheme>> | undefined }>`
   position: relative;
   width: 240px;
   min-height: 60px;

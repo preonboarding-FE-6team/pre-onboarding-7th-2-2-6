@@ -1,4 +1,4 @@
-import styled, { FlattenInterpolation, ThemeProps } from 'styled-components';
+import styled, { DefaultTheme, FlattenInterpolation, ThemeProps } from 'styled-components';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { flexBox } from '../styles/mixin';
@@ -6,7 +6,7 @@ import useDatePicker from '../hooks/useDatePicker';
 import Button from './Button';
 
 type DatePickerProps = {
-  customStyle?: FlattenInterpolation<ThemeProps<unknown>>;
+  customStyle?: FlattenInterpolation<ThemeProps<DefaultTheme>>;
   fromDate?: Date;
   toDate?: Date;
   onSetClick: (from: Date | undefined, to: Date | undefined) => () => void;
@@ -33,7 +33,7 @@ function DatePicker({ customStyle, fromDate, toDate, onSetClick }: DatePickerPro
 
 export default DatePicker;
 
-const Container = styled.div<{ customStyle: FlattenInterpolation<ThemeProps<unknown>> | undefined }>`
+const Container = styled.div<{ customStyle: FlattenInterpolation<ThemeProps<DefaultTheme>> | undefined }>`
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 8px ${({ theme }) => theme.grey_100};

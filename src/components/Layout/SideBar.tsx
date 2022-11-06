@@ -3,11 +3,14 @@ import { flexBox } from '../../styles/mixin';
 import { sidebarOptions } from '../../utils/conts';
 import DropdownLarge from '../DropdownLarge';
 import SideBarMenu from './SideBarMenu';
+import logo from '../../assets/images/logo.svg';
 
 function SideBar() {
   return (
     <Container>
-      <Logo>LEVER</Logo>
+      <Logo>
+        <img src={logo} alt="logo" />
+      </Logo>
 
       <Label>서비스</Label>
       <DropdownLarge options={sidebarOptions} />
@@ -35,6 +38,10 @@ const Logo = styled.div`
   ${flexBox('row', 'start')}
   font-size: 40px;
   font-weight: 700;
+  img {
+    width: 124px;
+    height: 30px;
+  }
 `;
 
 const Label = styled.div`
@@ -44,6 +51,5 @@ const Label = styled.div`
   padding: 0 20px;
   ${flexBox('row', 'start')};
   font-size: 12px;
-  font-weigth: 700;
   color: ${({ theme }) => theme.grey_300};
 `;
