@@ -58,6 +58,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html {
+    overflow: hidden;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
