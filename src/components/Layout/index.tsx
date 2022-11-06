@@ -25,6 +25,7 @@ function Layout({ children }: LayoutProps) {
 export default Layout;
 
 const Container = styled.div`
+  overflow: hidden;
   width: 1440px;
   height: 100vh;
   ${positionCenterX()};
