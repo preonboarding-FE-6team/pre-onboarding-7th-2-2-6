@@ -10,4 +10,4 @@ export const colors = {
   bg_g: '#F6F7F8',
   graph_01: '#4FADF7',
   graph_02: '#85DA47',
-};
+} as const;
