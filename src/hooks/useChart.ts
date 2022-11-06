@@ -1,5 +1,6 @@
 import Chart from 'chart.js/auto';
 import { CategoryScale, ChartData } from 'chart.js';
+import { Line } from 'react-chartjs-2';
 import { useTrend } from '../context/TrendContext';
 
 function useChart() {
@@ -31,7 +32,31 @@ function useChart() {
     ],
   };
 
-  return { data };
+  const isShowY1 = trends?.graphOption[1].content === '선택안함';
+  const options: React.ComponentProps<typeof Line>['options'] = {
+    elements: {
+      point: {
+        radius: 0, // 점 제거
+      },
+    },
+    scales: {
+      y: {
+        type: 'linear',
+        display: true,
+        position: 'left',
+      },
+      y1: {
+        type: 'linear',
+        display: !isShowY1,
+        position: 'right',
+        grid: {
+          drawOnChartArea: false,
+        },
+      },
+    },
+  };
+
+  return { data, options };
 }
 
 export default useChart;
