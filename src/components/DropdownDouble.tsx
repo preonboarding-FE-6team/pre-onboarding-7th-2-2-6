@@ -14,7 +14,7 @@ type DropdownDoubleProps = {
 
 function DropdownDouble({ options, customStyle, onOpt1Click, onOpt2Click }: DropdownDoubleProps) {
   const { isOpt1Open, isOpt2Open, selected, handleOpt1Toggle, handleOpt2Toggle, handleOpt1Select, handleOpt2Select } =
-    useDropdownDouble([options[0], { id: -1, content: '선택안함', option: '' }]);
+    useDropdownDouble();
 
   const handleOpt1Click = (option: DropdownOption) => () => {
     if (onOpt1Click) onOpt1Click(option);

@@ -17,4 +17,5 @@ const Style = styled.div`
   margin-top: 20px;
   border-radius: 20px;
   background-color: ${({ theme }) => theme.bg_w};
+  box-shadow: 4px 0px 10px ${({ theme }) => theme.shadow};
 `;
