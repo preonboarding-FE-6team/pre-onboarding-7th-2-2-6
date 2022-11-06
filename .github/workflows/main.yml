@@ -1,0 +1,27 @@
+name: main action
+on:
+  push:
+    branches:
+      - main                        
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code.
+        uses: actions/checkout@v2
+      
+      - name: Check Node v
+        run: node -v
+
+      - name: Install Dependencies
+        run: npm install --frozen-lockfile
+
+      - name: Build
+        run: npm run build
+      
+      - name: Deploy                  # Upload build file to S3
+        env:
+          AWS_ACCESS_KEY_ID: '${{ secrets.ACCESS_KEY }}'
+          AWS_SECRET_ACCESS_KEY: '${{ secrets.SECRET_ACCESS_KEY }}'
+        run: |
+          aws s3 cp --recursive --region ap-northeast-2 build s3://ad-management-service
