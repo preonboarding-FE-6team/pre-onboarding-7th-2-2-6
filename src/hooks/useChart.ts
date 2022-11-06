@@ -83,6 +83,11 @@ function useChart() {
         },
       },
     },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
   };
 
   return { data, options };
