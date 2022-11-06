@@ -6,18 +6,23 @@ type PerformanceCardProps = {
   content: string;
   fluctuation: string;
   isIncreased: boolean;
+  difference: number;
 };
 
-function PerformanceCard({ title, content, fluctuation, isIncreased }: PerformanceCardProps) {
+function PerformanceCard({ title, content, fluctuation, isIncreased, difference }: PerformanceCardProps) {
   return (
     <Container>
       <Title>{title}</Title>
       <Content>{content}</Content>
-      <Fluctuation isIncreased={isIncreased}>
-        {isIncreased && <span>▲</span>}
-        {!isIncreased && <span>▼</span>}
-        {fluctuation}
-      </Fluctuation>
+      {!difference ? (
+        <span>-</span>
+      ) : (
+        <Fluctuation isIncreased={isIncreased}>
+          {isIncreased && <span>▲</span>}
+          {!isIncreased && <span>▼</span>}
+          {fluctuation}
+        </Fluctuation>
+      )}
     </Container>
   );
 }
