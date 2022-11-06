@@ -2,6 +2,7 @@
 import { useCallback, useState } from 'react';
 import { useTrend } from '../context/TrendContext';
 import { DropdownOption } from '../types';
+import useFocusOut from './useFocusOut';
 
 type SelectedOption =
   | { id: number; option?: string | undefined; content: string }
@@ -16,6 +17,8 @@ function useDropdownDouble() {
     trends?.graphOption[0],
     trends?.graphOption[1],
   ]);
+  useFocusOut(isOpt1Open, setIsOpt1Open, 'trigger-dropdown');
+  useFocusOut(isOpt2Open, setIsOpt2Open, 'trigger-dropdown');
 
   const handleOpt1Toggle = useCallback(() => {
     setIsOpt1Open((cur) => !cur);

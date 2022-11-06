@@ -5,9 +5,9 @@ import { flexBox } from '../../styles/mixin';
 function TopBar() {
   return (
     <Container>
-      <IconContainer>
+      <HiOutlineBellContainer>
         <HiOutlineBell />
-      </IconContainer>
+      </HiOutlineBellContainer>
 
       <IconContainer>
         <HiOutlineCog />
@@ -38,6 +38,22 @@ const IconContainer = styled.div`
 
   & + div {
     margin-left: 30px;
+  }
+`;
+
+const HiOutlineBellContainer = styled(IconContainer)`
+  position: relative;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: ${({ theme }) => theme.secondary_02};
   }
 `;
 

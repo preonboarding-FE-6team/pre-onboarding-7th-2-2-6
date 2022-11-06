@@ -16,7 +16,7 @@ function DatePicker({ customStyle, fromDate, toDate, onSetClick }: DatePickerPro
   const { range, setRange } = useDatePicker();
 
   return (
-    <Container customStyle={customStyle}>
+    <Container className="date-picker" customStyle={customStyle}>
       <style>{css}</style>
       <DayPicker
         mode="range"

@@ -4,6 +4,7 @@ import { sidebarOptions } from '../../utils/conts';
 import DropdownLarge from '../DropdownLarge';
 import SideBarMenu from './SideBarMenu';
 import logo from '../../assets/images/logo.svg';
+import SideBarFooter from './SideBarFooter';
 
 function SideBar() {
   return (
@@ -17,6 +18,7 @@ function SideBar() {
 
       <Label>광고 센터</Label>
       <SideBarMenu />
+      <SideBarFooter />
     </Container>
   );
 }
@@ -24,12 +26,18 @@ function SideBar() {
 export default SideBar;
 
 const Container = styled.div`
+  flex-shrink: 0;
   z-index: 10;
+  overflow-y: auto;
   width: 320px;
   height: 100%;
   padding: 0 40px;
   background-color: ${({ theme }) => theme.bg_w};
   box-shadow: 4px 0px 10px ${({ theme }) => theme.shadow};
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const Logo = styled.div`
