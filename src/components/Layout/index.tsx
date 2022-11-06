@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { flexBox, positionCenterX } from '../../styles/mixin';
+import { flexBox } from '../../styles/mixin';
 import PageTitle from './PageTitle';
 import SideBar from './SideBar';
 import TopBar from './TopBar';
@@ -28,7 +28,7 @@ const Container = styled.div`
   overflow: hidden;
   width: 1440px;
   height: 100vh;
-  ${positionCenterX()};
+  margin: 0 auto;
   ${flexBox('row', 'start')};
 `;
 
