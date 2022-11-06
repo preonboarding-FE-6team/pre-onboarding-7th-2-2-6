@@ -30,7 +30,7 @@ function Dashboard() {
         <Dropdowns>
           <DropdownDouble options={graphOptions} onOpt1Click={handleOption1Click} onOpt2Click={handleOption2Click} />
 
-          <DropdownSmall options={periodOptions} customStyle={DropdownStyle2} />
+          <DropdownSmall options={periodOptions} customStyle={DropdownStyle2} initialOption={periodOptions[0]} />
         </Dropdowns>
 
         <ChartContainer>
