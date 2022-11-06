@@ -59,7 +59,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    overflow: hidden;
+    overflow-y: hidden;
   }
 
   a {
