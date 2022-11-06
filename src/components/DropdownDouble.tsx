@@ -28,11 +28,15 @@ function DropdownDouble({ options, customStyle, onOpt1Click, onOpt2Click }: Drop
     handleOpt2Select(option);
   };
 
+  const triggerStyles = [...Array(2)]
+    .map((_, i) => [OptionTriggerStyle, selected[i]?.content === '선택안함' ? OptionFontStyle : null])
+    .filter(Boolean);
+
   return (
     <DoubleContainer>
       <Container onClick={handleOpt1Toggle} customStyle={customStyle}>
-        <OptionSmall>
-          {selected[0]?.content}
+        <OptionSmall customStyle={triggerStyles[0]}>
+          <span className="table-first">{selected[0]?.content}</span>
           {isOpt1Open ? <FiChevronUp /> : <FiChevronDown />}
         </OptionSmall>
 
@@ -52,8 +56,8 @@ function DropdownDouble({ options, customStyle, onOpt1Click, onOpt2Click }: Drop
       </Container>
 
       <Container onClick={handleOpt2Toggle} customStyle={customStyle}>
-        <OptionSmall>
-          {selected[1]?.content}
+        <OptionSmall customStyle={triggerStyles[1]}>
+          <span className="table-second">{selected[1]?.content}</span>
           {isOpt2Open ? <FiChevronUp /> : <FiChevronDown />}
         </OptionSmall>
 
@@ -118,4 +122,27 @@ const OptionStyle = css`
   & + div {
     border-top: 1px solid ${({ theme }) => theme.grey_100};
   }
+`;
+
+const OptionTriggerStyle = css`
+  & span::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+
+  & span.table-first:before {
+    background-color: ${({ theme }) => theme.graph_01};
+  }
+
+  & span.table-second:before {
+    background-color: ${({ theme }) => theme.graph_02};
+  }
+`;
+
+const OptionFontStyle = css`
+  font-size: 12px;
 `;

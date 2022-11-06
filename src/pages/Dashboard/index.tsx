@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import styled, { css } from 'styled-components';
 import { Line } from 'react-chartjs-2';
-import type { DeepPartial } from 'chart.js/types/utils';
 import Container from '../../components/Container';
 import DropdownSmall from '../../components/DropdownSmall';
 import { flexBox } from '../../styles/mixin';
@@ -11,8 +9,6 @@ import useChart from '../../hooks/useChart';
 import { useTrend } from '../../context/TrendContext';
 import { DropdownOption } from '../../types';
 import DropdownDouble from '../../components/DropdownDouble';
-
-type _DeepPartialObject<T> = { [P in keyof T]?: DeepPartial<T[P]> };
 
 function Dashboard() {
   const { data, options } = useChart();
@@ -55,10 +51,6 @@ const SubTitle = styled.div`
 const Dropdowns = styled.div`
   margin-top: 42px;
   ${flexBox('row', 'space-between')}
-`;
-
-const DropdownStyle = css`
-  margin-right: 10px;
 `;
 
 const DropdownStyle2 = css`
