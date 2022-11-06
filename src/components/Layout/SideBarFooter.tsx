@@ -53,6 +53,7 @@ const IconWrapper = styled.div`
 const GuideTitle = styled.strong`
   display: inline-block;
   width: 100%;
+  margin-bottom: 7px;
   font-weight: 700;
   font-size: 16px;
   color: ${({ theme }) => theme.grey_800};
