@@ -1,9 +1,9 @@
 import React from 'react';
-import styled, { FlattenInterpolation, ThemeProps } from 'styled-components';
+import styled, { DefaultTheme, FlattenInterpolation, ThemeProps } from 'styled-components';
 
 type ButtonProps = {
   children: React.ReactNode;
-  customStyle?: FlattenInterpolation<ThemeProps<unknown>>;
+  customStyle?: FlattenInterpolation<ThemeProps<DefaultTheme>>;
   onClick?: () => void;
 };
 
@@ -17,7 +17,7 @@ function Button({ children, customStyle, onClick }: ButtonProps) {
 
 export default Button;
 
-const ButtonContainer = styled.button<{ customStyle: FlattenInterpolation<ThemeProps<unknown>> | undefined }>`
+const ButtonContainer = styled.button<{ customStyle: FlattenInterpolation<ThemeProps<DefaultTheme>> | undefined }>`
   padding: 12px 20px;
   background-color: ${({ theme }) => theme.primary};
   border-radius: 10px;

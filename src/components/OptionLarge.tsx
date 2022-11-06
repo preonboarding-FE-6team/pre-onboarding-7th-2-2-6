@@ -1,10 +1,10 @@
-import { css, FlattenInterpolation, ThemeProps } from 'styled-components';
+import { css, DefaultTheme, FlattenInterpolation, ThemeProps } from 'styled-components';
 import OptionRaw from './OptionsRaw';
 
 type OptionLargeProps = {
   children: React.ReactNode;
   isSelected?: boolean;
-  customStyle?: FlattenInterpolation<ThemeProps<unknown>>;
+  customStyle?: FlattenInterpolation<ThemeProps<DefaultTheme>>;
   onClick?: () => void;
 };
 
@@ -18,7 +18,7 @@ function OptionLarge({ children, isSelected, customStyle, onClick }: OptionLarge
 
 export default OptionLarge;
 
-const OptionLargeStyle = (customStyle: FlattenInterpolation<ThemeProps<unknown>> | undefined) => css`
+const OptionLargeStyle = (customStyle: FlattenInterpolation<ThemeProps<DefaultTheme>> | undefined) => css`
   width: 240px;
   height: 60px;
   padding: 0 20px;
