@@ -10,4 +10,5 @@ export const colors = {
   bg_g: '#F6F7F8',
   graph_01: '#4FADF7',
   graph_02: '#85DA47',
+  shadow: 'rgba(0, 0, 0, 0.04)',
 } as const;
