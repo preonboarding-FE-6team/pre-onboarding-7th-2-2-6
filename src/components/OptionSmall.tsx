@@ -1,10 +1,10 @@
-import { css, FlattenInterpolation, ThemeProps } from 'styled-components';
+import { css, DefaultTheme, FlattenInterpolation, ThemeProps } from 'styled-components';
 import OptionRaw from './OptionsRaw';
 
 type OptionSmallProps = {
   children: React.ReactNode;
   isSelected?: boolean;
-  customStyle?: FlattenInterpolation<ThemeProps<unknown>>;
+  customStyle?: FlattenInterpolation<ThemeProps<DefaultTheme>>;
   onClick?: () => void;
 };
 
@@ -18,7 +18,7 @@ function OptionSmall({ children, isSelected, customStyle, onClick }: OptionSmall
 
 export default OptionSmall;
 
-const OptionSmallStyle = (customStyle: FlattenInterpolation<ThemeProps<unknown>> | undefined) => css`
+const OptionSmallStyle = (customStyle: FlattenInterpolation<ThemeProps<DefaultTheme>> | undefined) => css`
   width: 123px;
   height: 40px;
   padding: 0 20px;
