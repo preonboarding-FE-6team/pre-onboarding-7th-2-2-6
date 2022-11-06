@@ -1,9 +1,11 @@
 import { useCallback, useState } from 'react';
 import { useTrend } from '../context/TrendContext';
+import useFocusOut from './useFocusOut';
 
 function usePageTitle() {
   const trends = useTrend();
   const [isOpenDatePicker, setIsOpenDatePicker] = useState(false);
+  useFocusOut(isOpenDatePicker, setIsOpenDatePicker, 'trigger-date-picker', 'date-picker');
 
   const handleDateSetClick = useCallback(
     (from: Date | undefined, to: Date | undefined) => () => {
