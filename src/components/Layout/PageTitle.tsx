@@ -22,10 +22,9 @@ function PageTitle() {
       {pageTitles[pathname]}
 
       {pathname === pathnames.dashboard && (
-        <DateRange onClick={handleDateRangeClick}>
-          <>
-            {`${parseDate(trends?.dateRange.fromDate)} ~ ${parseDate(trends?.dateRange.toDate)}`} <FaChevronDown />
-          </>
+        <DateRange className="trigger-date-picker" onClick={handleDateRangeClick}>
+          {`${parseDate(trends?.dateRange.fromDate)} ~ ${parseDate(trends?.dateRange.toDate)}`}
+          <FaChevronDown />
         </DateRange>
       )}
       {isOpenDatePicker && (

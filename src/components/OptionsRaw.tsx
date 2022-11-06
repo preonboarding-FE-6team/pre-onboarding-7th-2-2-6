@@ -18,7 +18,7 @@ function OptionRaw({ children, isSelected, customStyle, onClick }: OptionRawProp
     );
 
   return (
-    <Option customStyle={customStyle} onClick={onClick}>
+    <Option className="trigger-dropdown" customStyle={customStyle} onClick={onClick}>
       {children}
     </Option>
   );
