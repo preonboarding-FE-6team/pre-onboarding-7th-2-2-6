@@ -45,7 +45,9 @@ export function AdsProvider({ children, adsService }: AdsProviderProps) {
   };
 
   useEffect(() => {
-    getAds();
+    setTimeout(() => {
+      getAds();
+    }, 500);
   }, []);
 
   const value = useMemo(() => ({ ads, editAd, filterAd, currentOption }), [ads, currentOption]);

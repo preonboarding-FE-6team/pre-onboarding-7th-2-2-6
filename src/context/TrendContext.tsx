@@ -132,7 +132,9 @@ export function TrendProvider({ children, trendService }: TrendProviderProps) {
   };
 
   useEffect(() => {
-    getTrend(dateRange.fromDate, dateRange.toDate);
+    setTimeout(() => {
+      getTrend(dateRange.fromDate, dateRange.toDate);
+    }, 500);
   }, [dateRange]);
 
   const value = useMemo(
