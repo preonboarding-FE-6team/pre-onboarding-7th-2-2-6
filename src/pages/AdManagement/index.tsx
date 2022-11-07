@@ -7,6 +7,8 @@ import { flexBox } from '../../styles/mixin';
 import { DropdownOption } from '../../types';
 import { adManagementOptions } from '../../utils/conts';
 import AdCard from './AdCard';
+import { SpinnerContainer } from '../Dashboard';
+import Spinner from '../../components/LoadingSpinner';
 
 function AdManagement() {
   const { ads, filterAd, currentOption } = useAds() || {};
@@ -14,6 +16,14 @@ function AdManagement() {
   const handleOptionClick = (option: DropdownOption) => {
     if (filterAd) filterAd(option);
   };
+
+  if (ads?.length === 0) {
+    return (
+      <SpinnerContainer>
+        <Spinner />
+      </SpinnerContainer>
+    );
+  }
 
   return (
     <Container>
