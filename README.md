@@ -196,7 +196,9 @@
 
 - 수정하기 버튼 클릭 시 데이터 수정 가능
 
+
 ## 2**. 상태 관리**
+
 
 ### 2-1. useContext로 데이터 관리
 
@@ -334,7 +336,7 @@ export const colors = {
 - mixin 파일에서 기본적인 `flex` 스타일과 화면 크기 조정
 - `theme` 을 사용하여 컬러 관리
 
-## 5**.** GitHub Actions**을 사용한 CI/CD 구축**
+## 5. GitHub Actions을 사용한 CI/CD 구축
 
 - GitHub에서 제공하는 Actions를 사용하여 `Main` 브랜치에 푸시 될 때 S3 빌드 후 자동으로 배포 되도록 CI/CD 구축
 
