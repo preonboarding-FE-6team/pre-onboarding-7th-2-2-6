@@ -9,6 +9,7 @@ import useChart from '../../hooks/useChart';
 import { useTrend } from '../../context/TrendContext';
 import { DropdownOption } from '../../types';
 import DropdownDouble from '../../components/DropdownDouble';
+import Spinner from '../../components/LoadingSpinner';
 
 function Dashboard() {
   const { data, options } = useChart();
@@ -21,6 +22,14 @@ function Dashboard() {
   const handleOption2Click = (option: DropdownOption) => {
     trends?.setGraphOption(([opt1, opt2]) => (option.id === opt1.id ? [opt1, opt2] : [opt1, option]));
   };
+
+  if (trends?.trends.length === 0) {
+    return (
+      <SpinnerContainer>
+        <Spinner />
+      </SpinnerContainer>
+    );
+  }
 
   return (
     <>
@@ -60,4 +69,11 @@ const DropdownStyle2 = css`
 const ChartContainer = styled.div`
   margin-top: 40px;
   padding: 20px;
+`;
+
+export const SpinnerContainer = styled.div`
+  width: 100%;
+  height: 50%;
+
+  ${flexBox()}
 `;
